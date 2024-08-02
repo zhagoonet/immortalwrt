@@ -2101,6 +2101,28 @@ define Device/livinet_zr-3020-ubootmod
 endef
 TARGET_DEVICES += livinet_zr-3020-ubootmod
 
+define Device/lunzn_s20
+  DEVICE_VENDOR := Lunzn
+  DEVICE_DTS_DIR := ../dts
+  DEVICE_PACKAGES := e2fsprogs f2fsck mkf2fs kmod-mt7915e \
+	kmod-mt7986-firmware kmod-usb3 mt7986-wo-firmware
+  IMAGE/sysupgrade.bin := sysupgrade-tar | append-metadata
+endef
+
+define Device/lunzn_s20l
+  $(call Device/lunzn_s20)
+  DEVICE_MODEL := S20L
+  DEVICE_DTS := mt7986a-lunzn-s20l
+endef
+TARGET_DEVICES += lunzn_s20l
+
+define Device/lunzn_s20p
+  $(call Device/lunzn_s20)
+  DEVICE_MODEL := S20P
+  DEVICE_DTS := mt7986a-lunzn-s20p
+endef
+TARGET_DEVICES += lunzn_s20p
+
 define Device/mediatek_mt7981-rfb
   DEVICE_VENDOR := MediaTek
   DEVICE_MODEL := MT7981 rfb
